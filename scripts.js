@@ -43,12 +43,10 @@ function verbTest(){
     // Loop to test all verbs
     // Math.ceil(Math.random()*4); (Numero aleatorio del 1 al 4)
     
-    textLabel.innerHTML = numVerbsRemain(4);
-        
-
-    
-    
+    textLabel.innerHTML = numVerbsRemain(4);    
 }
+
+
 
 
 
