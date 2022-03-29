@@ -22,6 +22,9 @@ function Verbs(verbs, numTestP){
         }
         return undefined;
     };
+    this.assesVerb = function(){
+
+    };
     this.getActualVerb = function(){
         return actualVerb;
     };
