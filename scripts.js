@@ -219,8 +219,8 @@ function gettingResult(){
         }
         
     }
-    stringResult += "</ol>" + "<br> <h3>" + count + " hits of " + correctVerbsArray.length + 
-                    "<br>Score: " + ((count/correctVerbsArray.length)*10).toFixed(2) + "<h3>";
+    stringResult += "</ol>" + "<h2>" + count + " hits of " + correctVerbsArray.length + 
+                    "<br>Score: " + ((count/correctVerbsArray.length)*10).toFixed(2) + "</h2>";
 
     document.getElementById("results").innerHTML = stringResult;
 }
@@ -233,8 +233,7 @@ function clickRestart(){
 
 function clickTraslation(){
         document.getElementById("traslation").innerHTML = firstLetterUpperCase(verbManaging.getTraslation());
-        
-        setTimeout(()=>{document.getElementById("traslation").innerHTML = "Click here for translation"},1000);
+        setTimeout(()=>{document.getElementById("traslation").innerHTML = "Click here for translation";},1000);
 }
 
 function firstLetterUpperCase (str){
