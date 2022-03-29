@@ -6,6 +6,11 @@ function Verbs(verbs, numTestP){
     let actualPosition;
     let inputVerbs = [];
     let originalVerbs = [];
+    this.restart = function(){
+        testedVerbsId = [];
+        inputVerbs = [];
+        originalVerbs = [];
+    };
     this.position = function(){
        return (testedVerbsId.length) + "/" + numTestP;
     };
@@ -77,15 +82,17 @@ function showSection (n){
         verbManaging = new Verbs(verbsArray, document.getElementById("num_verbs").value);
         clickNextButton();
     }
-    if(n==3){section3.hidden = false;}
+    if(n==3){
+        section3.hidden = false;
+        gettingResult();
+    }
 }
 
 function clickNextButton(){
-    if(verbManaging.checkComplete()){
-        showSection(3);
-        return;
-    }
-    if(verbManaging.getTestedVerbsId().length != 0){
+    document.getElementById("infinitive").disabled = false;
+    document.getElementById("past").disabled = false;
+    document.getElementById("participle").disabled = false;
+    if(verbManaging.getTestedVerbsId().length > 0){
         let inf = document.getElementById("infinitive").value;
         let pas = document.getElementById("past").value;
         let par = document.getElementById("participle").value;
@@ -93,6 +100,10 @@ function clickNextButton(){
         document.getElementById("infinitive").value = "";
         document.getElementById("past").value = "";
         document.getElementById("participle").value = "";
+    }
+    if(verbManaging.checkComplete()){
+        showSection(3);
+        return;
     }
     verbManaging.newVerb();
     let verbPosition = document.getElementById("verb_number");
@@ -102,14 +113,52 @@ function clickNextButton(){
     switch(randomTense){
         case 0:
             document.getElementById("infinitive").value = verb["infinitive"];
+            document.getElementById("infinitive").disabled = true;
             break;
         case 1:
             document.getElementById("past").value  = verb["past"];
+            document.getElementById("past").disabled = true;
             break;
         case 2:
             document.getElementById("participle").value  = verb["participle"];
+            document.getElementById("participle").disabled = true;
             break;           
     }
+}
+
+function gettingResult(){
+    let stringResult;
+    let correctVerbsArray = verbManaging.getOriginalVerbs();
+    let answeredVerbsArray = verbManaging.getInputVerbs();
+    let count = 0;
+    stringResult = "<ol>";    
+    for(let i = 0; i < correctVerbsArray.length;i++){
+        stringResult += "<li>Correct: " + correctVerbsArray[i]["infinitive"] + 
+                        " - " + correctVerbsArray[i]["past"] + 
+                        " - " + correctVerbsArray[i]["participle"] + "<br>" + 
+                        "Answered: " + answeredVerbsArray[i]["infinitive"] + 
+                        " - " + answeredVerbsArray[i]["past"] + 
+                        " - " + answeredVerbsArray[i]["participle"];
+                        
+        if (correctVerbsArray[i]["infinitive"] == answeredVerbsArray[i]["infinitive"] &&
+        correctVerbsArray[i]["past"] == answeredVerbsArray[i]["past"] &&
+        correctVerbsArray[i]["participle"] == answeredVerbsArray[i]["participle"]){
+            stringResult += " (+1) </li>";
+            count++;
+        } else {
+            stringResult += " (+0) </li>";
+        }
+        
+    }
+    stringResult += "</ol>" + "<br> <h3>" + count + " hits of " + correctVerbsArray.length + "<h3>";
+
+    document.getElementById("results").innerHTML = stringResult;
+}
+
+function clickRestart(){
+    verbManaging.restart();
+    document.getElementById("num_verbs").max = verbsArray.length;
+    showSection(1);
 }
        
 
