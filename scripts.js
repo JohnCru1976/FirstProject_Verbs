@@ -1,35 +1,51 @@
 // Creation of a class to manage the verbs testing
 function Verbs(verbs, numTestP){    
-    let testedVerbs = [];
+    let testedVerbsId = [];
     let totalVerbs = verbs.length;
     let actualVerb;
     let actualPosition;
+    let inputVerbs = [];
+    let originalVerbs = [];
     this.position = function(){
-       return (testedVerbs.length) + "/" + numTestP;
+       return (testedVerbsId.length) + "/" + numTestP;
     };
     this.checkComplete = function(){
-       return testedVerbs.length >= numTestP;
+       return testedVerbsId.length >= numTestP;
     };
     this.newVerb = function(){
         actualPosition = Math.floor(Math.random()*totalVerbs); 
-        while(testedVerbs.some((elem) => elem == actualPosition) && testedVerbs.length < numTestP){
+        while(testedVerbsId.some((elem) => elem == actualPosition) && testedVerbsId.length < numTestP){
             actualPosition = Math.floor(Math.random()*totalVerbs);
         }
-        if(testedVerbs.length < numTestP){
+        if(testedVerbsId.length < numTestP){
             actualVerb = verbs[actualPosition];
-            testedVerbs.push(actualPosition);
+            testedVerbsId.push(actualPosition);
             return actualVerb;
         }
         return undefined;
     };
-    this.assesVerb = function(){
-
+    this.assessVerb = function(infinitive, past, participle){
+        let newInput = {};
+        newInput.infinitive = infinitive;
+        newInput.past = past;
+        newInput.participle = participle;
+        inputVerbs.push(newInput);
+        originalVerbs.push(actualVerb);
     };
     this.getActualVerb = function(){
         return actualVerb;
     };
     this.getActualposition = function(){
         return actualPosition;
+    };
+    this.getInputVerbs = function(){
+        return inputVerbs;
+    };
+    this.getOriginalVerbs = function(){
+        return originalVerbs;
+    };
+     this.getTestedVerbsId = function(){
+        return testedVerbsId;
     };
 }
 
@@ -68,6 +84,15 @@ function clickNextButton(){
     if(verbManaging.checkComplete()){
         showSection(3);
         return;
+    }
+    if(verbManaging.getTestedVerbsId().length != 0){
+        let inf = document.getElementById("infinitive").value;
+        let pas = document.getElementById("past").value;
+        let par = document.getElementById("participle").value;
+        verbManaging.assessVerb(inf,pas,par);
+        document.getElementById("infinitive").value = "";
+        document.getElementById("past").value = "";
+        document.getElementById("participle").value = "";
     }
     verbManaging.newVerb();
     let verbPosition = document.getElementById("verb_number");
