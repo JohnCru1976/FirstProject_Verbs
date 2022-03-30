@@ -125,10 +125,19 @@ function showSection (n){
     section1.hidden = true;
     section2.hidden = true;
     section3.hidden = true;
-    if(n==1){section1.hidden = false;}
+    if(n==1){
+        section1.hidden = false;
+    }
     if(n==2){
-        section2.hidden = false;
         verbManaging = new Verbs(verbsArray, document.getElementById("num_verbs").value);
+        if(document.getElementById("num_verbs").value < 1 ||
+           document.getElementById("num_verbs").value > verbsArray.length){
+            document.getElementById("num_verbs").focus();
+            showSection (1);
+            alert("Introduce a valid number!!");
+            return;
+        }
+        section2.hidden = false;
         clickNextButton();
     }
     if(n==3){
@@ -228,6 +237,7 @@ function gettingResult(){
 function clickRestart(){
     verbManaging.restart();
     document.getElementById("num_verbs").max = verbsArray.length;
+    
     showSection(1);
 }
 
@@ -237,8 +247,7 @@ function clickTraslation(){
 }
 
 function firstLetterUpperCase (str){
-    let word = str;
-    let firstLetter = word.charAt(0).toUpperCase();
-    let restWord = word.slice(1);
+    let firstLetter = str.charAt(0).toUpperCase();
+    let restWord = str.slice(1);
     return firstLetter + restWord;
 }
