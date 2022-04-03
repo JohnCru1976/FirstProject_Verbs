@@ -228,8 +228,8 @@ function gettingResult(){
         }
         
     }
-    stringResult += "</ol>" + "<h2>" + count + " hits of " + correctVerbsArray.length + 
-                    "<br>Score: " + ((count/correctVerbsArray.length)*10).toFixed(2) + "</h2>";
+    stringResult += "</ol>" + "<br><br><h2>" + count + " hits of " + correctVerbsArray.length + 
+                    "<br><br>Score: " + ((count/correctVerbsArray.length)*10).toFixed(2) + "</h2>";
 
     document.getElementById("results").innerHTML = stringResult;
 }
