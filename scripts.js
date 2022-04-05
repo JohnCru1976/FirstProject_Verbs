@@ -103,7 +103,6 @@ window.onload = function (){
     showSection(1);
 }
 
-
 const keypress = ({key})=>{
     let keyAscii = key.charCodeAt(0);
     
@@ -124,7 +123,6 @@ const keypress = ({key})=>{
         }
     }
 };
-
 
 function showSection (n){
     // Shows only the section pass as n parameter
