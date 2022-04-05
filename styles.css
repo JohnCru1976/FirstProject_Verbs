@@ -5,9 +5,11 @@
 }
 
 #main_title{
-    margin: 20px;
     display: block;
     text-align: center;
+    padding: 10px;
+    top: 0;
+    background-color: white;
     font-weight: bold;
     font-size: 30px;
     color:darkslategray;
@@ -95,15 +97,19 @@
     margin-left: 200px;
 }
 
+#restart_button{
+    margin-bottom: 60px;
+}
 
 #footer{
-  position:fixed;
-  width: 100%;
-  bottom:0;
-  margin: 30px;
-  font-style: italic;
-  font-weight: bold;
-  text-align: center;
-}
+    position:fixed;
+    width: 100%;
+    bottom:0;
+    padding: 5px;
+    background-color: white;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+  }
 
 
