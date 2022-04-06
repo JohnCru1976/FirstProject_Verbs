@@ -229,10 +229,10 @@ function gettingResult(){
         if (correctVerbsArray[i]["infinitive"] == answeredVerbsArray[i]["infinitive"] &&
         correctVerbsArray[i]["past"] == answeredVerbsArray[i]["past"] &&
         correctVerbsArray[i]["participle"] == answeredVerbsArray[i]["participle"]){
-            stringResult += " (+1) </li>";
+            stringResult += "<br>(+1)</li>";
             count++;
         } else {
-            stringResult += " (+0) </li>";
+            stringResult += "<br>(+0)</li>";
         }
         
     }
