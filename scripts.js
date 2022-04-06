@@ -97,24 +97,31 @@ let verbManaging;
 window.onload = function (){
     document.getElementById("num_verbs").max = verbsArray.length;
     
-    document.getElementById("infinitive").addEventListener('keypress', keypress);
-    document.getElementById("past").addEventListener('keypress', keypress);
-    document.getElementById("participle").addEventListener('keypress', keypress);
+    document.getElementById("infinitive").addEventListener('keydown', keypress);
+    document.getElementById("past").addEventListener('keydown', keypress);
+    document.getElementById("participle").addEventListener('keydown', keypress);
     
     showSection(1);
 }
 
 const keypress = ({key})=>{
-    if ((key === "Enter" || key === "Space") && document.getElementById("infinitive").value.trim() != "" & 
+    let keyAscii = key.charCodeAt(0);
+    
+    if ((keyAscii === 69 || keyAscii === 32) && document.getElementById("infinitive").value.trim() != "" & 
             document.getElementById("past").value.trim() != "" &
             document.getElementById("participle").value.trim() != "") {
         clickNextButton();
-    } else if(document.getElementById("infinitive").value.trim() === ""){
-        document.getElementById("infinitive").focus();
-    } else if(document.getElementById("past").value.trim() === ""){
-        document.getElementById("past").focus();
-    } else if(document.getElementById("participle").value.trim() === ""){
-        document.getElementById("participle").focus();
+    } else if(keyAscii === 69 || keyAscii === 32){
+        if(document.getElementById("infinitive").value.trim() === ""){
+            document.getElementById("infinitive").focus();
+            return false;
+        } else if(document.getElementById("past").value.trim() === ""){
+            document.getElementById("past").focus();
+            return false;
+        } else if(document.getElementById("participle").value.trim() === ""){
+            document.getElementById("participle").focus();
+            return false;
+        }
     }
 };
 
@@ -229,8 +236,9 @@ function gettingResult(){
         }
         
     }
-    stringResult += "</ol>" + "<br><br><h2>" + count + " hits of " + correctVerbsArray.length + 
-                    "<br><br>Score: " + ((count/correctVerbsArray.length)*10).toFixed(2) + "</h2>";
+    stringResult = "<h2>" + count + " hits of " + correctVerbsArray.length + 
+                    "<br>Score: " + ((count/correctVerbsArray.length)*10).toFixed(2) + "</h2><br>" 
+                   + stringResult + "</ol>" ;
 
     document.getElementById("results").innerHTML = stringResult;
 }
