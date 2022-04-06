@@ -222,7 +222,7 @@ function gettingResult(){
         stringResult += "<li>Correct: " + firstLetterUpperCase(correctVerbsArray[i]["infinitive"]) + 
                         " - " + firstLetterUpperCase(correctVerbsArray[i]["past"]) + 
                         " - " + firstLetterUpperCase(correctVerbsArray[i]["participle"]) + "<br>" + 
-                        "Answered: " + firstLetterUpperCase(answeredVerbsArray[i]["infinitive"]) + 
+                        "Answer: " + firstLetterUpperCase(answeredVerbsArray[i]["infinitive"]) + 
                         " - " + firstLetterUpperCase(answeredVerbsArray[i]["past"]) + 
                         " - " + firstLetterUpperCase(answeredVerbsArray[i]["participle"]);
                         
