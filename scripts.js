@@ -66,6 +66,7 @@ const verbsArray = [
     {infinitive:"build", past:"built", participle:"built", translation:"construir"},
     {infinitive:"buy", past:"bought", participle:"bought", translation:"comprar"},
     {infinitive:"catch", past:"caught", participle:"caught", translation:"coger"},
+    {infinitive:"choose", past:"chose", participle:"chosen", translation:"elegir"},
     {infinitive:"come", past:"came", participle:"come", translation:"venir"},
     {infinitive:"cost", past:"cost", participle:"cost", translation:"costar"},
     {infinitive:"do", past:"did", participle:"done", translation:"hacer"},

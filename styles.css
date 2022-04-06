@@ -13,6 +13,11 @@
     color:darkslategray;
 }
 
+#num_verbs{
+    display: block;
+    margin: 0px auto;
+}
+
 .secondary_titles{
     margin: 15px;
     margin-left: 30px;
@@ -91,6 +96,10 @@
     background-color: limegreen;
 }
 
+#restart_button{
+    margin-bottom: 40px;
+}
+
 #results{
     margin-left: 200px;
 }
@@ -106,4 +115,16 @@
   text-align: center;
 }
 
+/* MEDIA QUERIES */
+@media screen and (max-width:767px){
+    #main_title{
+        font-size: 23px;
+    }
+    .input_field{
+        width: 95%;
+    }
+    #results{
+        margin-left: 30px;
+    }
+}
 
