@@ -130,6 +130,13 @@
     #main_title{
         font-size: 23px;
     }
+    .input_label{
+        display: block;
+        text-align: center;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top:5px;
+    }
     .input_field{
         width: 95%;
     }

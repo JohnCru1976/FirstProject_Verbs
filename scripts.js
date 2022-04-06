@@ -236,9 +236,15 @@ function gettingResult(){
         }
         
     }
-    stringResult = "<h2>" + count + " hits of " + correctVerbsArray.length + 
-                    "<br>Score: " + ((count/correctVerbsArray.length)*10).toFixed(2) + "</h2><br>" 
-                   + stringResult + "</ol>" ;
+    let tempResult = stringResult;
+    stringResult = "<h2>" + count + " hits of " + correctVerbsArray.length;
+
+    if((count*10)%correctVerbsArray.length === 0){
+        stringResult += "<br>Score: " + ((count/correctVerbsArray.length)*10) + "</h2><br>";
+    }else{
+        stringResult += "<br>Score: " + ((count/correctVerbsArray.length)*10).toFixed(2) + "</h2><br>";
+    }          
+    stringResult += tempResult + "</ol>" ;
 
     document.getElementById("results").innerHTML = stringResult;
 }
